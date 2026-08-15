@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Áudio → texto — ai900 console</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="has-console">
+
+<nav class="topnav">
+  <a class="brand" href="../index.html">
+    <span class="logo">ai900</span>
+    <span class="logo-sub">gateway console</span>
+  </a>
+  <div class="links">
+    <a href="../index.html">Início</a>
+    <a href="vision.html">Vision</a>
+    <a href="transcription.html" class="active">Áudio → texto</a>
+    <a href="tts.html">Texto → áudio</a>
+  </div>
+  <div class="status" id="healthStatus">
+    <span class="dot" id="healthDot"></span>
+    <span id="healthText">verificando…</span>
+  </div>
+</nav>
+
+<main class="single">
+  <div class="page-head">
+    <span class="eyebrow">Azure AI Speech</span>
+    <h1>Áudio → texto</h1>
+    <span class="route">POST /api/speech/fast-transcription</span>
+    <p class="desc">Transcreve um arquivo de áudio (wav, mp3, ogg, flac...) para texto. Informe um ou mais idiomas esperados, separados por vírgula.</p>
+  </div>
+
+  <section class="panel">
+    <div class="field">
+      <label for="sttFile">Arquivo de áudio</label>
+      <div class="dropzone" id="sttDrop" tabindex="0">
+        <span class="hint-icon">♪</span>
+        <span>Arraste um áudio aqui ou clique para selecionar</span>
+        <div class="fname" id="sttFname"></div>
+        <input type="file" id="sttFile" accept="audio/*">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="sttLocales">Idiomas (locales)</label>
+      <input type="text" id="sttLocales" placeholder="pt-BR ou pt-BR,en-US" value="pt-BR">
+      <span class="hint">separados por vírgula · padrão: pt-BR</span>
+    </div>
+
+    <button class="run" id="sttRun" disabled>Transcrever áudio</button>
+
+    <div class="result" id="sttResult">
+      <div class="placeholder">// aguardando envio</div>
+    </div>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <a href="../index.html">← voltar ao início</a>
+</footer>
+
+<div class="console">
+  <div class="console-head">
+    <span>request log</span>
+    <button id="clearLog">limpar</button>
+  </div>
+  <div class="console-body" id="consoleBody">
+    <div class="empty">// nenhuma requisição ainda — as chamadas HTTP feitas por esta página aparecem aqui</div>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/transcription.js"></script>
+</body>
+</html>

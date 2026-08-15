@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texto → áudio — ai900 console</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="has-console">
+
+<nav class="topnav">
+  <a class="brand" href="../index.html">
+    <span class="logo">ai900</span>
+    <span class="logo-sub">gateway console</span>
+  </a>
+  <div class="links">
+    <a href="../index.html">Início</a>
+    <a href="vision.html">Vision</a>
+    <a href="transcription.html">Áudio → texto</a>
+    <a href="tts.html" class="active">Texto → áudio</a>
+  </div>
+  <div class="status" id="healthStatus">
+    <span class="dot" id="healthDot"></span>
+    <span id="healthText">verificando…</span>
+  </div>
+</nav>
+
+<main class="single">
+  <div class="page-head">
+    <span class="eyebrow">Azure AI Speech</span>
+    <h1>Texto → áudio</h1>
+    <span class="route">POST /api/speech/text-to-speech</span>
+    <p class="desc">Converte um texto em um arquivo de áudio (mp3) falado, usando as vozes neurais do Azure AI Speech.</p>
+  </div>
+
+  <section class="panel">
+    <div class="field">
+      <label for="ttsText">Texto</label>
+      <textarea id="ttsText" placeholder="Olá, mundo!"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="ttsLocale">Locale</label>
+      <input type="text" id="ttsLocale" placeholder="pt-BR" value="pt-BR">
+    </div>
+
+    <div class="field">
+      <label for="ttsVoice">Voz</label>
+      <input type="text" id="ttsVoice" placeholder="pt-BR-FranciscaNeural" value="pt-BR-FranciscaNeural">
+      <span class="hint">nome de uma voz neural do Azure Speech</span>
+    </div>
+
+    <button class="run" id="ttsRun">Gerar áudio</button>
+
+    <div class="result" id="ttsResult">
+      <div class="placeholder">// aguardando envio</div>
+    </div>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <a href="../index.html">← voltar ao início</a>
+</footer>
+
+<div class="console">
+  <div class="console-head">
+    <span>request log</span>
+    <button id="clearLog">limpar</button>
+  </div>
+  <div class="console-body" id="consoleBody">
+    <div class="empty">// nenhuma requisição ainda — as chamadas HTTP feitas por esta página aparecem aqui</div>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/tts.js"></script>
+</body>
+</html>
